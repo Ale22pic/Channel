@@ -1,0 +1,26 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      channelProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+acceleration  acceleration  [0 1 -2 0 0 0 0] (0.004005 0 0);
+
+autoAdjust      no;
+
+tau             tau [0 0 1 0 0 0 0] 0.1;
+
+targetMomentumbulk     targetMomentumbulk [1 -2 -1 0 0 0 0] (1 0 0);
+
+// ************************************************************************* //

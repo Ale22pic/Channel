@@ -1,0 +1,105 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.6                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     rhoEnergyFoam;
+
+startFrom       latestTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         0.003;
+
+deltaT          1e-9;
+
+writeControl    adjustableRunTime;
+
+writeInterval   1e-3;
+
+//writeControl    timeStep;
+//writeInterval   1;
+
+purgeWrite      0;
+
+writeFormat     binary;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable yes;
+
+adjustTimeStep  yes;
+
+maxCo           0.9; // 0.1;
+
+maxDeltaT       0.001;
+
+pressArtDiff    false; //true; //activate artificial diffusion on pressure
+convArtDiff     false; //true; //activate artificial diffusion on pressure
+
+ku        0.25;
+kp        0.25;
+ducLevelPress       0.00; // pressure diffusion threshold 
+ducLevelConv        0.05; // convective diffusion threshold
+epsilon             12.6; // u_infty^2
+minfty              9.; // Reference Mach^2 number needed by AUSM flux (free stream Mach number)
+rm 		    1.5; 
+/* functions
+{
+    fieldAverage1
+    {
+        type            fieldAverage;
+        functionObjectLibs ( "libfieldFunctionObjects.so" );
+        enabled         true;
+        outputControl   outputTime;
+        cleanRestart    off;
+        window          1e02;
+        fields
+        (
+            U
+            {
+                mean        on;
+                prime2Mean  on;
+                base        time;
+            }
+
+            p
+            {
+                mean        on;
+                prime2Mean  on;
+                base        time;
+            }
+
+            T
+            {
+                mean        on;
+                prime2Mean  on;
+                base        time;
+            }
+
+        );
+    }
+    
+} */
+
+// ************************************************************************* //
